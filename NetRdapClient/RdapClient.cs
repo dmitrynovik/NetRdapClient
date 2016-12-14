@@ -31,16 +31,21 @@ namespace NetRdapClient
             var client = (HttpWebRequest) WebRequest.Create(url);
             client.Accept = "application/json";
 
-            var response = await client.GetResponseAsync();
-            using (var stream = response.GetResponseStream())
+            using (var response = (HttpWebResponse)await client.GetResponseAsync())
             {
-                if (stream == null)
-                    throw new IOException("Unexpected NULL response");
+                if (response.StatusCode == HttpStatusCode.NotFound)
+                    return null;
 
-                using (var reader = new StreamReader(stream, _encoding))
+                using (var stream = response.GetResponseStream())
                 {
-                    var content = reader.ReadToEnd();
-                    return JsonConvert.DeserializeObject<RdapResponse>(content);
+                    if (stream == null)
+                        throw new IOException("Unexpected NULL response");
+
+                    using (var reader = new StreamReader(stream, _encoding))
+                    {
+                        var content = reader.ReadToEnd();
+                        return JsonConvert.DeserializeObject<RdapResponse>(content);
+                    }
                 }
             }
         }

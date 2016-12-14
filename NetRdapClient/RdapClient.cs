@@ -21,6 +21,8 @@ namespace NetRdapClient
             _encoding = encoding ?? Encoding.UTF8;
         }
 
+        public string BaseUrl => _baseUrl;
+
         public async Task<RdapResponse> Get(RdapObjectType type, string id)
         {
             if (id == null) throw new ArgumentNullException(nameof(id));

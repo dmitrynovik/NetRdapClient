@@ -3,7 +3,6 @@ using Newtonsoft.Json;
 
 namespace NetRdapClient.Objects
 {
-    // NOTE: curre
     public class RdapResponse
     {
         [JsonProperty("handle")]

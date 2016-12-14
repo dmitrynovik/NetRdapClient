@@ -39,11 +39,14 @@
     <Reference Include="Microsoft.CSharp" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="JCardParser.cs" />
+    <Compile Include="JCardParseException.cs" />
     <Compile Include="Objects\RdapEntity.cs" />
     <Compile Include="Objects\RdapEvent.cs" />
     <Compile Include="Objects\RdapResponse.cs" />
     <Compile Include="Objects\RdapLink.cs" />
     <Compile Include="Objects\RdapNotice.cs" />
+    <Compile Include="Objects\RdapVcardArray.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RdapClient.cs" />
     <Compile Include="RdapObjectType.cs" />

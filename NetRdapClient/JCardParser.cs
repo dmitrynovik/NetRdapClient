@@ -62,7 +62,7 @@ namespace NetRdapClient
 
         private static string GetStringContentFromVCard(IEnumerable<JToken> grandChildren)
         {
-            return grandChildren.Skip(1).OfType<JValue>().Select(x => x.Value?.ToString()).FirstOrDefault(x => x != null && x != "text");
+            return grandChildren.Skip(1).OfType<JValue>().Select(x => x.Value<string>()).FirstOrDefault(x => x != null && x != "text");
         }
 
         private static IEnumerable<string> GetArrayContentFromVCard(IEnumerable<JToken> grandChildren)
